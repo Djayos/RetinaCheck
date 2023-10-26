@@ -3,7 +3,7 @@ import numpy as np
 from keras.models import load_model
 from PIL import Image, ImageOps
 
-app = Flask(__name__, static_folder='static')
+application = Flask(__name__, static_folder='static')
 
 # Load the model
 model = load_model("keras_Model.h5", compile=False)
@@ -50,4 +50,4 @@ def diseases():
     return render_template('diseases.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)
