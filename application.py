@@ -11,11 +11,11 @@ model = load_model("keras_Model.h5", compile=False)
 # Load the labels
 class_names = open("labels.txt", "r").readlines()
 
-@app.route('/')
+@application.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/runscript', methods=['POST'])
+@application.route('/runscript', methods=['POST'])
 def run_script():
     if 'file' not in request.files:
         return jsonify({"result": "No image uploaded", "filename": "No file uploaded"})
@@ -41,11 +41,11 @@ def run_script():
 
     return jsonify({'result': predicted_label, 'confidence_score': float(confidence_score), 'filename': file.filename})
 
-@app.route('/about-us')
+@application.route('/about-us')
 def about_us():
     return render_template('about-us.html')
 
-@app.route('/diseases')
+@application.route('/diseases')
 def diseases():
     return render_template('diseases.html')
 
